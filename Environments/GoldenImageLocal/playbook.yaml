@@ -20,6 +20,7 @@
     apt:
       name: 
       - vim
+      - xclip
       - openssh-server
       - git
       - nginx
