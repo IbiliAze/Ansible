@@ -1,0 +1,44 @@
+---
+- hosts: oldubuntu
+  become: true
+  tasks:
+  - name: apt install
+    when: ansible_os_family == "Debian"
+    apt:
+      name:
+      - apache2
+      - curl
+      - wget
+      - jq
+      - vim
+      - xclip
+      state: present
+    ignore_errors: true
+  - name: yum install
+    when: ansible_os_family == "RedHat"
+    yum:
+      name:
+      - httpd
+      - curl
+      - wget
+      - jq
+      - vim
+      - xclip
+      state: present
+    ignore_errors: true
+ 
+- hosts: oldubuntu
+  become: true
+  tasks:
+  - name: apt update
+    when: ansible_os_family == "Debian"
+    apt:
+      name: "*"
+      state: latest
+    ignore_errors: true
+  - name: yum update
+    when: ansible_os_family == "RedHat"
+    yum:
+      name: "*"
+      state: latest
+    ignore_errors: true
