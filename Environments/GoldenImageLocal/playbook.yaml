@@ -11,6 +11,9 @@
   - name: Sudoers File
     shell: echo 'ibi     ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+  - name: Alias
+    shell: alias gacp='git add .; git commit -m "aliased commit on ubuntu"; git push'
+
   - name: Package Update
     apt:
       name: "*"
