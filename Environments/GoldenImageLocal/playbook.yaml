@@ -1,0 +1,52 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: SSH Test
+    action: ping
+ 
+  - name: OS Type
+    shell: uname -a
+
+  - name: Sudoers File
+    shell: echo 'ibi     ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+  - name: Package Update
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Install Services
+    apt:
+      name: 
+      - vim
+      - openssh-server
+      - git
+      - nginx
+      - jq
+      - python3
+      - net-tools
+      - htop
+      - lxd
+      - lxd-client
+      - ansible
+      state: present
+  
+  - name: Git Config Email
+    shell: git config --global user.email "ibili73@gmail.com"
+
+  - name: Git Config Name
+    shell: git config --global user.name "Ibi Hasanli"
+
+  - name: Git Folder
+    file:
+      path: /home/ibi/Documents/Git/
+      state: directory     
+  - name: AWS Folder
+    file:
+      path: /home/ibi/Documents/Git/AWS
+      state: directory
+  - name: Kubernetes Folder
+    file:
+      path: /home/ibi/Documents/Git/Kubernetes
+      state: directory
