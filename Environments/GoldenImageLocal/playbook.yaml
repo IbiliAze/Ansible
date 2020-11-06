@@ -22,6 +22,8 @@
   - name: Install Services
     apt:
       name: 
+      - curl
+      - wget
       - vim
       - xclip
       - openssh-server
