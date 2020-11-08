@@ -3,6 +3,8 @@ minikube ansible_host=192.168.0.136 ansible_sudo_pass=cisco
 
 oldubuntu ansible_host=192.168.0.64 ansible_sudo_pass=cisco
 
+centos ansible_host=192.168.0.85 ansible_sudo_pass=cisco
+
 
 [local]
 control ansible_connection=local
