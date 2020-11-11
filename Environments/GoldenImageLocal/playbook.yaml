@@ -20,7 +20,7 @@
 #      state: latest
 #      when: ansible_os_family == "Debian"
 
-  - name: Install Services
+  - name: Install apt Services
     when: ansible_os_family == "Debian"
     apt:
       name: 
@@ -41,6 +41,10 @@
       - ansible
       - nginx
       state: present
+  - name: Install snap Services
+    snap:
+      name:
+      - kubectl
 
   - name: systemctl for nginx
     service:
