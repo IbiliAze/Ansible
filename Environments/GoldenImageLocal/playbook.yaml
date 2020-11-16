@@ -41,11 +41,20 @@
       - ansible
       - nginx
       - awscli
+      - python3-pip
       state: present
   - name: Install snap Services
     snap:
       name:
       - kubectl
+  - name: Install pip3 Services
+    pip:
+      name:
+      - requests
+      - boto3 
+      - ncclient
+      - pyaml
+      - flask
 
   - name: systemctl for nginx
     service:
