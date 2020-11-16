@@ -40,6 +40,7 @@
       - lxd-client
       - ansible
       - nginx
+      - awscli
       state: present
   - name: Install snap Services
     snap:
