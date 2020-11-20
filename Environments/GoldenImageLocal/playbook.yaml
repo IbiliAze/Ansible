@@ -1,0 +1,83 @@
+---
+- hosts: kubernetes
+  become: true
+  tasks:
+  - name: SSH Test
+    action: ping
+ 
+  - name: OS Type
+    shell: uname -a
+
+#  - name: Sudoers File
+#    shell: echo 'ibi     ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+#  - name: Alias
+#    shell: alias gacp='git add .; git commit -m "aliased commit on ubuntu"; git push'
+
+#  - name: Package Update
+#    apt:
+#      name: "*"
+#      state: latest
+#      when: ansible_os_family == "Debian"
+
+  - name: Install apt Services
+    when: ansible_os_family == "Debian"
+    apt:
+      name: 
+      - curl
+      - wget
+      - vim
+      - xclip
+      - tree
+      - openssh-server
+      - git
+      - nginx
+      - jq
+      - python3
+      - net-tools
+      - htop
+      - lxd
+      - lxd-client
+      - ansible
+      - nginx
+      - awscli
+      - python3-pip
+      state: present
+#  - name: Install snap Services
+#    snap:
+#      name:
+#      - kubectl
+  - name: Install pip3 Services
+    pip:
+      name:
+      - requests
+      - boto3 
+      - ncclient
+      - pyaml
+      - flask
+
+  - name: systemctl for nginx
+    service:
+      name: nginx
+      state: stopped
+      enabled: false
+
+
+#  - name: Git Config Email
+#    shell: git config --global user.email "ibili73@gmail.com"
+
+#  - name: Git Config Name
+#    shell: git config --global user.name "Ibi Hasanli"
+
+  - name: Git Folder
+    file:
+      path: /home/ibi/Documents/Git/
+      state: directory     
+  - name: AWS Folder
+    file:
+      path: /home/ibi/Documents/Git/AWS
+      state: directory
+  - name: Kubernetes Folder
+    file:
+      path: /home/ibi/Documents/Git/Kubernetes
+      state: directory

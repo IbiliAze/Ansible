@@ -1,0 +1,9 @@
+- hosts: oldubuntu
+  become: true
+  tasks:
+  - name: Copy index.html
+    when: ansible_os_family == "Debian"
+    copy:
+      src: ./index.html
+      dest: /var/www/html
+      mode: 0755
