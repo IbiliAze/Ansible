@@ -42,6 +42,7 @@
       - nginx
       - awscli
       - python3-pip
+      - debootstrap
       state: present
 #  - name: Install snap Services
 #    snap:
