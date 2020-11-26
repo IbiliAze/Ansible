@@ -43,6 +43,7 @@
       - awscli
       - python3-pip
       - debootstrap
+      - openjdk-8-jdk
       state: present
 #  - name: Install snap Services
 #    snap:
