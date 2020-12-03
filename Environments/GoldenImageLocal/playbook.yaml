@@ -35,6 +35,7 @@
       - jq
       - python3
       - net-tools
+      - firewalld
       - htop
       - lxd
       - lxd-client
@@ -44,6 +45,7 @@
       - python3-pip
       - debootstrap
       - openjdk-8-jdk
+      - sysstat
       state: present
 #  - name: Install snap Services
 #    snap:
